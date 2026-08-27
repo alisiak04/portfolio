@@ -92,6 +92,24 @@ export default function Hero() {
         <span className="accent-tag mono">frontend technologies</span> and {' '}
         <span className="accent-comment mono">Agile team projects</span>. I enjoy turning complex ideas into intuitive, user-focused software.
       </motion.p>
+
+      <div className="skill-tags" aria-label="Technologies">
+      {[
+        'Java',
+        'Python',
+        'TypeScript',
+        'JavaScript',
+        'C++',
+        'React',
+        'Angular',
+        'Git',
+        'AWS',
+      ].map((skill) => (
+        <span key={skill} className="skill-tag">
+          {skill}
+        </span>
+      ))}
+    </div>
     </section>
   )
 }
