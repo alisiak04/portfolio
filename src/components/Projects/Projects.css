@@ -1,0 +1,639 @@
+/* =========================================================
+   PROJECTS SCENE
+========================================================= */
+
+.projects-section {
+  position: relative;
+}
+
+.projects-scene {
+  position: relative;
+
+  width: 100vw;
+  max-width: 100vw;
+
+  aspect-ratio: 16 / 9;
+
+  margin-left: calc(50% - 50vw);
+
+  overflow: hidden;
+
+  border-radius: 0;
+
+  background: #080b0d;
+
+  isolation: isolate;
+}
+
+/* Background video */
+
+.projects-scene-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+}
+
+/* Subtle overlay */
+
+.projects-scene-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 8, 10, 0.08),
+      rgba(5, 8, 10, 0.18)
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   COMPUTER HOTSPOT
+========================================================= */
+
+.projects-computer-hotspot {
+  position: absolute;
+
+  /*
+    These values control where the clickable
+    computer area sits on the video.
+  */
+
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+
+  width: 30%;
+  height: 42%;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  z-index: 5;
+}
+
+/*
+  Invisible hotspot.
+
+  We don't want a giant obvious button sitting
+  over the artwork.
+*/
+
+.projects-computer-hotspot::before {
+  content: '';
+
+  position: absolute;
+  inset: 8%;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.projects-computer-hotspot:hover::before {
+  background: rgba(255, 255, 255, 0.035);
+
+  box-shadow:
+    0 0 35px rgba(255, 220, 150, 0.12);
+}
+
+
+/* Small interaction hint */
+
+.projects-computer-label {
+  position: absolute;
+
+  left: 50%;
+  bottom: -18px;
+
+  transform: translateX(-50%);
+
+  padding: 7px 12px;
+
+  border-radius: 6px;
+
+  background: rgba(10, 12, 14, 0.8);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  color: rgba(255, 245, 220, 0.8);
+
+  font-family: var(--mono, monospace);
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+
+  pointer-events: none;
+
+  white-space: nowrap;
+}
+
+.projects-computer-hotspot:hover
+.projects-computer-label {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
+
+.projects-modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px;
+
+  background: rgba(4, 7, 9, 0.68);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   PROJECT WINDOW
+========================================================= */
+
+.projects-modal {
+  width: min(1000px, 92vw);
+
+  max-height: 88vh;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #171718;
+
+  border: 1px solid rgba(255, 230, 180, 0.18);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(255, 210, 130, 0.06);
+}
+
+
+/* =========================================================
+   WINDOW HEADER
+========================================================= */
+
+.projects-modal-header {
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #202021;
+}
+
+.projects-window-dots {
+  display: flex;
+
+  gap: 7px;
+
+  margin-right: 16px;
+}
+
+.projects-window-dots span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.projects-window-title {
+  flex: 1;
+
+  text-align: center;
+
+  margin-right: 50px;
+
+  font-family: var(--mono, monospace);
+
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.projects-close {
+  border: none;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 24px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.projects-close:hover {
+  color: white;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.projects-filters {
+  display: flex;
+
+  gap: 8px;
+
+  padding: 18px 24px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.projects-filters button {
+  padding: 7px 13px;
+
+  border-radius: 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-family: var(--mono, monospace);
+
+  font-size: 11px;
+
+  letter-spacing: 0.7px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.projects-filters button:hover {
+  color: rgba(255, 255, 255, 0.85);
+
+  border-color: rgba(255, 220, 160, 0.35);
+}
+
+.projects-filters button.active {
+  color: #171717;
+
+  background: #f1d59c;
+
+  border-color: #f1d59c;
+}
+
+
+/* =========================================================
+   PROJECT CONTENT
+========================================================= */
+
+.projects-modal-content {
+  flex: 1;
+
+  min-height: 380px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.9fr;
+
+  gap: 40px;
+
+  padding: 38px 40px;
+}
+
+.projects-modal-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.projects-project-meta {
+  display: flex;
+
+  gap: 6px;
+
+  margin-bottom: 10px;
+
+  font-family: var(--mono, monospace);
+
+  font-size: 11px;
+
+  color: rgba(255, 220, 160, 0.55);
+}
+
+.projects-project-tag {
+  display: inline-block;
+
+  padding: 4px 8px;
+
+  margin-bottom: 18px;
+
+  border-radius: 4px;
+
+  background: rgba(241, 213, 156, 0.1);
+
+  border: 1px solid rgba(241, 213, 156, 0.2);
+
+  color: #f1d59c;
+
+  font-family: var(--mono, monospace);
+
+  font-size: 10px;
+}
+
+.projects-modal-info h3 {
+  margin: 0 0 8px;
+
+  font-size: clamp(24px, 3vw, 34px);
+
+  line-height: 1.15;
+
+  color: #f4eee2;
+}
+
+.projects-project-blurb {
+  margin-bottom: 24px;
+
+  font-family: var(--mono, monospace);
+
+  font-size: 12px;
+
+  color: rgba(255, 220, 160, 0.65);
+}
+
+.projects-modal-info p {
+  max-width: 520px;
+
+  margin: 0 0 24px;
+
+  color: rgba(245, 240, 230, 0.68);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TECHNOLOGY TAGS
+========================================================= */
+
+.projects-stack {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-bottom: 24px;
+}
+
+.projects-stack span {
+  padding: 5px 9px;
+
+  border-radius: 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-family: var(--mono, monospace);
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   GITHUB
+========================================================= */
+
+.projects-github {
+  display: inline-flex;
+
+  padding: 9px 13px;
+
+  border-radius: 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: #f1d59c;
+
+  text-decoration: none;
+
+  font-family: var(--mono, monospace);
+
+  font-size: 11px;
+
+  transition: all 0.2s ease;
+}
+
+.projects-github:hover {
+  background: rgba(241, 213, 156, 0.08);
+
+  border-color: rgba(241, 213, 156, 0.4);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.projects-project-image {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 260px;
+
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #101112;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.projects-project-image img {
+  width: 100%;
+  height: 100%;
+
+  max-height: 320px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.projects-modal-navigation {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 24px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.projects-modal-navigation > button {
+  border: none;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-family: var(--mono, monospace);
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.projects-modal-navigation > button:hover:not(:disabled) {
+  color: #f1d59c;
+}
+
+.projects-modal-navigation button:disabled {
+  opacity: 0.25;
+
+  cursor: default;
+}
+
+.projects-project-dots {
+  display: flex;
+
+  gap: 6px;
+}
+
+.projects-project-dots button {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.projects-project-dots button.active {
+  width: 18px;
+
+  border-radius: 4px;
+
+  background: #f1d59c;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 700px) {
+
+  .projects-scene {
+    width: 100vw;
+    max-width: 100vw;
+
+    aspect-ratio: 16 / 9;
+
+    margin-left: calc(50% - 50vw);
+
+    min-height: 0;
+
+    border-radius: 0;
+  }
+
+  .projects-computer-hotspot {
+    width: 55%;
+    height: 40%;
+  }
+
+  .projects-modal-backdrop {
+    padding: 14px;
+  }
+
+  .projects-modal {
+    max-height: 92vh;
+  }
+
+  .projects-modal-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 26px 22px;
+    overflow-y: auto;
+  }
+
+  .projects-project-image {
+    min-height: 180px;
+    order: -1;
+  }
+
+  .projects-filters {
+    overflow-x: auto;
+  }
+
+  .projects-modal-navigation {
+    flex-shrink: 0;
+  }
+}
