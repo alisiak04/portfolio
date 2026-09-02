@@ -511,11 +511,11 @@ p {
   .experience-photo {
     grid-column: 2;
     grid-row: 2;
-    max-width: 280px;
+    max-width: 100%;
   }
 
   .experience-photo img {
-    height: 220px;
+    height: 280px;
   }
 
   .experience-content {
@@ -710,54 +710,181 @@ p {
 
 /* ---- Navigation mobile ---- */
 
+/* ---- Navigation mobile ---- */
+
+.nav-menu-button {
+  display: none;
+
+  width: 38px;
+  height: 38px;
+
+  margin-left: auto;
+
+  padding: 8px;
+
+  border: 1px solid var(--line);
+  border-radius: 6px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-menu-button:hover {
+  background: var(--panel);
+  border-color: var(--keyword);
+}
+
+.nav-menu-button span {
+  display: block;
+
+  width: 17px;
+  height: 1.5px;
+
+  background: var(--ink-dim);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-menu-button.open span {
+  background: var(--ink);
+}
+
+.nav-menu-button.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-menu-button.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+
+.nav-mobile-menu {
+  display: none;
+}
+
+
 @media (max-width: 800px) {
   .nav-container {
     padding: 0 20px;
   }
-
-  .nav-links {
-    margin-left: 28px;
-    gap: 16px;
-  }
 }
 
-@media (max-width: 650px) {
-  .nav-container {
-    height: auto;
-    min-height: 56px;
-    padding: 12px 20px;
 
-    flex-wrap: wrap;
-    gap: 12px;
+@media (max-width: 650px) {
+
+  .nav-container {
+    position: relative;
+
+    min-height: 56px;
+    height: auto;
+
+    padding: 9px 20px;
   }
 
   .nav-name {
     font-size: 13px;
   }
 
-  .nav-links {
-    order: 3;
-
-    width: 100%;
-    margin-left: 0;
-
-    overflow-x: auto;
-    padding-bottom: 2px;
-
-    scrollbar-width: none;
-  }
-
-  .nav-links::-webkit-scrollbar {
+  /* Hide desktop navigation */
+  .nav-links,
+  .nav-socials {
     display: none;
   }
 
-  .nav-links a {
-    flex-shrink: 0;
+  /* Show hamburger */
+  .nav-menu-button {
+    display: flex;
   }
 
-  .nav-socials {
-    margin-left: auto;
+  /* Dropdown */
+  .nav-mobile-menu {
+    display: flex;
+
+    position: absolute;
+
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+
+    padding: 10px 20px 18px;
+
+    background: rgba(15, 16, 22, 0.97);
+
+    border-bottom: 1px solid var(--line);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-8px);
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s ease;
   }
+
+  .nav-mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+  }
+
+  .nav-mobile-menu a {
+    padding: 12px 4px;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid var(--line-soft);
+
+    transition:
+      color 0.2s ease,
+      padding-left 0.2s ease;
+  }
+
+  .nav-mobile-menu a:hover {
+    color: var(--ink);
+
+    padding-left: 8px;
+  }
+
+  .nav-mobile-divider {
+    height: 10px;
+  }
+
+  .nav-mobile-menu a:last-child {
+    border-bottom: none;
+  }
+  @media (max-width: 600px) {
+  .experience-photo img.intercom-photo {
+    object-position: center top;
+  }
+}
 }
 /* =========================================================
    HERO ACHIEVEMENTS

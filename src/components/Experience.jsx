@@ -119,6 +119,7 @@ export default function Experience() {
               <motion.img
                 key={role.image}
                 src={role.image}
+                className={role.company === 'Intercom' ? 'intercom-photo' : ''}
                 alt={`${role.company} internship`}
                 initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}

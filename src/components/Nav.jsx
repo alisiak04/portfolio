@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const LINKS = [
   { href: '#about', label: 'about', accent: 'accent-keyword' },
   { href: '#experience', label: 'experience', accent: 'accent-func' },
@@ -5,16 +7,20 @@ const LINKS = [
 ]
 
 export default function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <header className="site-nav">
       <div className="nav-container mono">
 
-        {/* Left: name */}
-        <a href="#top" className="nav-name">
+        {/* Name */}
+        <a href="#top" className="nav-name" onClick={closeMenu}>
           Alisia Kazimierek
         </a>
 
-        {/* Section links */}
+        {/* Desktop section links */}
         <nav className="nav-links">
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} className={l.accent}>
@@ -23,7 +29,7 @@ export default function Nav() {
           ))}
         </nav>
 
-        {/* Right: social icons */}
+        {/* Desktop social icons */}
         <div className="nav-socials">
 
           {/* Email */}
@@ -86,6 +92,66 @@ export default function Nav() {
           </a>
 
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          className={`nav-menu-button ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        {/* Mobile dropdown */}
+        <div className={`nav-mobile-menu ${menuOpen ? 'open' : ''}`}>
+
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={l.accent}
+              onClick={closeMenu}
+            >
+              {l.label}
+            </a>
+          ))}
+
+          <div className="nav-mobile-divider" />
+
+          <a
+            href="mailto:alisiakazimierek2104@gmail.com"
+            className="accent-keyword"
+            onClick={closeMenu}
+          >
+            email
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/alisiakazimierek"
+            target="_blank"
+            rel="noreferrer"
+            className="accent-keyword"
+            onClick={closeMenu}
+          >
+            linkedin ↗
+          </a>
+
+          <a
+            href="https://github.com/alisiak04"
+            target="_blank"
+            rel="noreferrer"
+            className="accent-keyword"
+            onClick={closeMenu}
+          >
+            github ↗
+          </a>
+
+        </div>
+
       </div>
     </header>
   )

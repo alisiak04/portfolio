@@ -575,13 +575,6 @@
   width: 100%;
   height: 100%;
 
-  /*
-    Default fallback only — actual object-fit
-    and object-position are set per-project
-    inline via project.imageFit / project.imagePosition
-    in projects.json, so each project can control
-    its own crop precisely.
-  */
   object-fit: contain;
 
   object-position: center;
@@ -641,7 +634,6 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
-
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -664,41 +656,147 @@
     height: 40%;
   }
 
+  /* Modal */
+
   .projects-modal-backdrop {
-    padding: 12px;
+    padding: 10px;
+
+    align-items: center;
+
+    overflow: hidden;
   }
 
   .projects-modal {
     width: 100%;
+    max-width: 100%;
 
-    max-height: 92vh;
+    max-height: 94vh;
+
+    overflow: hidden;
   }
 
-  .projects-modal-content {
-    grid-template-columns: 1fr;
-
-    gap: 22px;
-
-    padding: 24px 20px;
-
-    overflow-y: auto;
-  }
-
-  .projects-project-image {
-    order: -1;
-
-    aspect-ratio: 4 / 3;
-
-    max-height: 40vh;
-  }
+  /* Filters */
 
   .projects-filters {
     overflow-x: auto;
 
     padding: 12px 16px;
+
+    flex-shrink: 0;
+
+    scrollbar-width: none;
   }
 
-  .projects-modal-navigation {
-    flex-shrink: 0;
+  .projects-filters::-webkit-scrollbar {
+    display: none;
   }
+
+  /* Project content */
+
+  .projects-modal-content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+
+    padding: 24px 20px;
+
+    /*
+      The project itself becomes the scrollable area.
+      This prevents the image from covering the text.
+    */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    align-items: stretch;
+
+    flex: 1;
+  }
+
+  /* Project information comes first */
+
+  .projects-modal-info {
+    order: 1;
+
+    width: 100%;
+  }
+
+  .projects-modal-info h3 {
+    font-size: 25px;
+
+    line-height: 1.2;
+  }
+
+  .projects-modal-info p {
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    margin-bottom: 18px;
+  }
+
+  .projects-stack {
+    margin-bottom: 0;
+  }
+
+  .projects-github {
+    margin-top: 18px;
+  }
+
+  /* Project image comes AFTER all project information */
+
+  .projects-project-image {
+    order: 2;
+
+    width: 100%;
+
+    /*
+      Don't use a fixed height.
+      The image gets its own space after the text.
+    */
+    aspect-ratio: 4 / 3;
+
+    max-height: none;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+  }
+
+  .projects-project-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+  }
+
+  /* Bottom navigation stays visible */
+
+  .projects-modal-navigation {
+    min-height: 48px;
+
+    flex-shrink: 0;
+
+    padding: 12px 16px;
+  }
+}
+.projects-modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(4, 7, 9, 0.72);
+
+  backdrop-filter: blur(8px);
+
+  overflow: hidden;
 }

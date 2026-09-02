@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import './Projects.css'
 
@@ -14,6 +14,22 @@ export default function Projects() {
   const [isOpen, setIsOpen] = useState(false)
   const [filter, setFilter] = useState('all')
   const [projectIndex, setProjectIndex] = useState(0)
+
+  /* Lock background scrolling when modal is open */
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+  }, [isOpen])
 
   const filteredProjects = useMemo(() => {
     if (filter === 'all') return PROJECTS
@@ -114,7 +130,7 @@ export default function Projects() {
                 onClick={(event) => event.stopPropagation()}
               >
 
-                {/* Window header */}
+                {/* Header */}
                 <div className="projects-modal-header">
                   <span className="projects-window-title">
                     projects.exe
@@ -167,12 +183,10 @@ export default function Projects() {
                       }}
                     >
 
-                      {/* Left side */}
+                      {/* LEFT SIDE */}
                       <div className="projects-modal-info">
 
-                        <h3>
-                          {project.name}
-                        </h3>
+                        <h3>{project.name}</h3>
 
                         <div className="projects-project-blurb-row">
                           <div className="projects-project-blurb">
@@ -207,20 +221,28 @@ export default function Projects() {
                             className="projects-github"
                           >
                             <span>View on GitHub</span>
-                            <img src="/github.png" alt="GitHub" className="projects-github-icon"/>
+
+                            <img
+                              src="/github.png"
+                              alt="GitHub"
+                              className="projects-github-icon"
+                            />
                           </a>
                         )}
 
                       </div>
 
-                      {/* Right side */}
+                      {/* IMAGE */}
                       <div className="projects-project-image">
                         <img
                           src={project.image}
                           alt={`${project.name} project`}
                           style={{
-                            objectFit: project.imageFit || 'contain',
-                            objectPosition: project.imagePosition || 'center',
+                            objectFit:
+                              project.imageFit || 'contain',
+
+                            objectPosition:
+                              project.imagePosition || 'center',
                           }}
                         />
                       </div>
