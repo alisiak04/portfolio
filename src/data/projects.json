@@ -1,0 +1,148 @@
+[
+{
+"name": "OBD-II Vehicle Monitor",
+"category": "hardware",
+"tag": "Solo",
+"blurb": "Custom OBD-II device & driver interface",
+"course": "Final Year Project",
+"description": "Designed and built a bespoke OBD-II vehicle monitoring device from the ground up, investigating how a permanently installed device could monitor vehicle data while remaining accessible to non-technical drivers. Designed the electronic schematic and custom PCB, sent the board for manufacture and soldered all components onto the finished board. Designed and 3D printed a custom enclosure, developed the embedded firmware for vehicle communication and power management, and built the software interface that presents vehicle statistics and diagnostic information in plain language.",
+"stack": [
+"ESP32",
+"C",
+"CAN Bus",
+"KiCad",
+"PCB Design",
+"3D Printing",
+"Embedded Systems"
+],
+"image": "/projects/obd2.png",
+"imageFit": "cover",
+"github": "https://github.com/alisiak04/obd2"
+},
+{
+"name": "Health Work Balance",
+"category": "software",
+"tag": "Solo",
+"blurb": "PC & Fitbit monitoring system",
+"course": "Immersive Software Engineering",
+"description": "Developed a real-time monitoring system integrating Fitbit health data with PC usage metrics including heart rate, steps, CPU load, memory usage, system uptime and process count. Implemented a priority-based task scheduler and thread-safe caching system to manage background data collection and optimise API usage. Built bidirectional Fitbit integration for logging custom activities and a SQLite database for storing historical metrics and analysing health-work balance trends.",
+"stack": [
+"Python",
+"Flask",
+"WebSockets",
+"SQLite",
+"Fitbit API"
+],
+"image": "/projects/health-work-balance.png",
+"imageFit": "cover",
+"imagePosition": "left",
+"github": "https://github.com/alisiak04/ContextOfCode"
+},
+{
+"name": "Smart CO Safety System",
+"category": "hardware",
+"tag": "Team",
+"blurb": "Embedded building safety system",
+"course": "IoT Embedded Systems",
+"description": "Developed the hardware and firmware for an ESP32-based carbon monoxide safety system. Built and connected the physical components including sensors, LEDs, buzzer, buttons and the prototype building controls, then developed the firmware to monitor sensors and control the system behaviour. Designed and implemented a custom binary communication protocol with CRC8 error checking for reliable communication between system components.",
+"stack": [
+"C",
+"ESP32",
+"FreeRTOS",
+"MQTT",
+"Embedded Systems",
+"Binary Protocol"
+],
+"image": "/projects/embedded.JPG",
+"imageFit": "cover",
+"github": "https://github.com/MiaBorkoo/Embedded-Systems"
+},
+{
+"name": "JJ's Pizzeria",
+"category": "software",
+"tag": "Team",
+"blurb": "Interactive restaurant simulation game",
+"course": "Software Design",
+"description": "Developed an interactive restaurant simulation game where players prepare custom pizzas, serve customers with varied personalities and progress through a multi-day gameplay cycle. Spearheaded development of the core simulation logic, including the customer behaviour system, randomised day progression and main game loop managing customer flow and gameplay stages. Implemented a Factory pattern to dynamically create customer personality behaviours.",
+"stack": [
+"Java",
+"JavaFX",
+"Design Patterns",
+"JUnit"
+],
+"image": "/projects/jjpizza.png",
+"imageFit": "cover",
+"github": "https://github.com/ConorBISE/JJSPizzeria"
+},
+{
+"name": "Zork: Pirate Adventure",
+"category": "software",
+"tag": "Solo",
+"blurb": "C++ graphical adventure game",
+"course": "Immersive Software Engineering",
+"description": "Developed a pirate-themed reinterpretation of the classic Zork text adventure. Players begin trapped in a dungeon and progress through interconnected rooms by solving quizzes, discovering keys and collecting treasure before attempting to join a pirate crew. Developed the game logic in C++ and built the graphical interface using Qt.",
+"stack": [
+"C++",
+"Qt",
+"CMake",
+"Object-Oriented Design"
+],
+"image": "/projects/zork.png",
+"imageFit": "cover",
+"github": "https://github.com/alisiak03/Zork"
+},
+{
+"name": "Lecture Engagement Pod",
+"category": "hardware",
+"tag": "Team",
+"blurb": "IoT classroom feedback system",
+"course": "HCI",
+"description": "Developed the hardware and firmware for an IoT classroom feedback system designed to improve real-time communication between students and lecturers. Built and integrated the ESP32-based hardware, physical feedback buttons and supporting electronics, then developed the firmware responsible for capturing and communicating student responses. Integrated the device with the wider system to enable real-time feedback through the classroom dashboard.",
+"stack": [
+"ESP32",
+"C",
+"Firmware",
+"Wi-Fi",
+"IoT",
+"Hardware"
+],
+"image": "/projects/HCI.png",
+"imageFit": "cover",
+"github": "https://github.com/alisiak04/HCI"
+},
+{
+"name": "AI Vehicle Classification",
+"category": "software",
+"tag": "Team",
+"blurb": "Custom CNN for vehicle classification",
+"course": "Artificial Intelligence",
+"description": "Contributed to a team machine learning project focused on automated vehicle classification. Designed and developed a custom convolutional neural network (CNN) for classifying vehicle images, including the model architecture, training and evaluation. Investigated the model's performance as part of the wider project comparing different deep learning approaches.",
+"stack": [
+"Python",
+"PyTorch",
+"CNN",
+"Deep Learning",
+"Computer Vision"
+],
+"image": "/projects/aimodels.png",
+"github": "https://github.com/ISE-CS4445-AI/ai-project-aicoholics"
+},
+{
+"name": "Blockchain Ticket",
+"category": "software",
+"tag": "Solo",
+"blurb": "Blockchain-based event ticketing system",
+"course": "Blockchain",
+"description": "Developed a blockchain-based event ticketing system allowing users to purchase, check and transfer event tickets using smart contracts. Developed and tested the Solidity smart contracts with Hardhat and deployed the system to the Sepolia Ethereum test network, with a JavaScript frontend and Node.js server handling ticket interactions.",
+"stack": [
+"Solidity",
+"Hardhat",
+"Ethereum",
+"JavaScript",
+"Node.js"
+],
+"image": "/projects/blockchain.png",
+"imageFit": "cover",
+"github": "https://github.com/alisiak04/Blockchain_Ticket"
+}
+]

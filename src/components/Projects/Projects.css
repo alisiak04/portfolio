@@ -21,11 +21,12 @@
   border-radius: 0;
 
   background: #080b0d;
-
-  isolation: isolate;
 }
 
-/* Background video */
+
+/* =========================================================
+   BACKGROUND VIDEO
+========================================================= */
 
 .projects-scene-video {
   position: absolute;
@@ -39,7 +40,10 @@
   z-index: 0;
 }
 
-/* Subtle overlay */
+
+/* =========================================================
+   VIDEO OVERLAY
+========================================================= */
 
 .projects-scene-overlay {
   position: absolute;
@@ -65,13 +69,9 @@
 .projects-computer-hotspot {
   position: absolute;
 
-  /*
-    These values control where the clickable
-    computer area sits on the video.
-  */
-
   left: 50%;
   top: 48%;
+
   transform: translate(-50%, -50%);
 
   width: 30%;
@@ -84,13 +84,6 @@
 
   z-index: 5;
 }
-
-/*
-  Invisible hotspot.
-
-  We don't want a giant obvious button sitting
-  over the artwork.
-*/
 
 .projects-computer-hotspot::before {
   content: '';
@@ -115,7 +108,7 @@
 }
 
 
-/* Small interaction hint */
+/* Interaction hint */
 
 .projects-computer-label {
   position: absolute;
@@ -150,8 +143,7 @@
   white-space: nowrap;
 }
 
-.projects-computer-hotspot:hover
-.projects-computer-label {
+.projects-computer-hotspot:hover .projects-computer-label {
   opacity: 1;
 }
 
@@ -165,16 +157,16 @@
 
   inset: 0;
 
-  z-index: 1000;
+  z-index: 99999;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  padding: 32px;
+  padding: 24px;
 
-  background: rgba(4, 7, 9, 0.68);
+  background: rgba(4, 7, 9, 0.72);
 
   backdrop-filter: blur(8px);
 }
@@ -185,11 +177,14 @@
 ========================================================= */
 
 .projects-modal {
-  width: min(1000px, 92vw);
+  width: min(1050px, 92vw);
 
+  /*
+    Keep this deliberately compact.
+    We don't want the project window taking
+    over the entire screen.
+  */
   max-height: 88vh;
-
-  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -198,10 +193,12 @@
 
   border: 1px solid rgba(255, 230, 180, 0.18);
 
-  border-radius: 12px;
+  border-radius: 10px;
+
+  overflow: hidden;
 
   box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.6),
+    0 30px 100px rgba(0, 0, 0, 0.65),
     0 0 50px rgba(255, 210, 130, 0.06);
 }
 
@@ -211,42 +208,25 @@
 ========================================================= */
 
 .projects-modal-header {
-  height: 46px;
+  height: 42px;
+
+  flex-shrink: 0;
 
   display: flex;
 
   align-items: center;
 
-  padding: 0 16px;
+  padding: 0 14px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   background: #202021;
 }
 
-.projects-window-dots {
-  display: flex;
-
-  gap: 7px;
-
-  margin-right: 16px;
-}
-
-.projects-window-dots span {
-  width: 10px;
-  height: 10px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.22);
-}
-
 .projects-window-title {
   flex: 1;
 
   text-align: center;
-
-  margin-right: 50px;
 
   font-family: var(--mono, monospace);
 
@@ -256,23 +236,37 @@
 }
 
 .projects-close {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   border: none;
 
   background: transparent;
 
   color: rgba(255, 255, 255, 0.55);
 
-  font-size: 24px;
+  font-size: 23px;
 
   line-height: 1;
 
   cursor: pointer;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+
+  border-radius: 4px;
 }
 
 .projects-close:hover {
   color: white;
+
+  background: rgba(255, 255, 255, 0.07);
 }
 
 
@@ -285,7 +279,9 @@
 
   gap: 8px;
 
-  padding: 18px 24px;
+  padding: 14px 22px;
+
+  flex-shrink: 0;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -332,18 +328,25 @@
 ========================================================= */
 
 .projects-modal-content {
-  flex: 1;
-
-  min-height: 380px;
-
   display: grid;
 
-  grid-template-columns: 1fr 0.9fr;
+  grid-template-columns: 0.95fr 1.05fr;
 
-  gap: 40px;
+  gap: 34px;
 
-  padding: 38px 40px;
+  padding: 30px 34px;
+
+  align-items: center;
+
+  min-height: 0;
+
+  overflow: hidden;
 }
+
+
+/* =========================================================
+   PROJECT INFORMATION
+========================================================= */
 
 .projects-modal-info {
   display: flex;
@@ -351,20 +354,43 @@
   flex-direction: column;
 
   align-items: flex-start;
+
+  min-width: 0;
 }
 
-.projects-project-meta {
+.projects-modal-info h3 {
+  margin: 0 0 10px;
+
+  font-size: clamp(24px, 3vw, 34px);
+
+  line-height: 1.15;
+
+  color: #f4eee2;
+}
+
+
+/* =========================================================
+   BLURB + TEAM TAG ROW
+========================================================= */
+
+.projects-project-blurb-row {
   display: flex;
 
-  gap: 6px;
+  align-items: center;
 
-  margin-bottom: 10px;
+  flex-wrap: wrap;
 
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.projects-project-blurb {
   font-family: var(--mono, monospace);
 
-  font-size: 11px;
+  font-size: 12px;
 
-  color: rgba(255, 220, 160, 0.55);
+  color: rgba(255, 220, 160, 0.65);
 }
 
 .projects-project-tag {
@@ -372,7 +398,7 @@
 
   padding: 4px 8px;
 
-  margin-bottom: 18px;
+  flex-shrink: 0;
 
   border-radius: 4px;
 
@@ -387,36 +413,16 @@
   font-size: 10px;
 }
 
-.projects-modal-info h3 {
-  margin: 0 0 8px;
-
-  font-size: clamp(24px, 3vw, 34px);
-
-  line-height: 1.15;
-
-  color: #f4eee2;
-}
-
-.projects-project-blurb {
-  margin-bottom: 24px;
-
-  font-family: var(--mono, monospace);
-
-  font-size: 12px;
-
-  color: rgba(255, 220, 160, 0.65);
-}
-
 .projects-modal-info p {
-  max-width: 520px;
+  max-width: 500px;
 
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 
   color: rgba(245, 240, 230, 0.68);
 
-  font-size: 15px;
+  font-size: 14px;
 
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 
@@ -429,23 +435,59 @@
 
   flex-wrap: wrap;
 
-  gap: 7px;
+  gap: 6px;
 
-  margin-bottom: 24px;
+  margin-bottom: 4px;
 }
 
 .projects-stack span {
-  padding: 5px 9px;
+  padding: 5px 8px;
 
   border-radius: 4px;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid;
 
   font-family: var(--mono, monospace);
 
   font-size: 10px;
+}
+
+/* GitHub-style topic-tag palette, cycled across tags */
+
+.projects-stack span.tag-color-0 {
+  color: #79c0ff;
+  background: rgba(56, 139, 253, 0.12);
+  border-color: rgba(56, 139, 253, 0.3);
+}
+
+.projects-stack span.tag-color-1 {
+  color: #7ee787;
+  background: rgba(63, 185, 80, 0.12);
+  border-color: rgba(63, 185, 80, 0.3);
+}
+
+.projects-stack span.tag-color-2 {
+  color: #d2a8ff;
+  background: rgba(163, 113, 247, 0.12);
+  border-color: rgba(163, 113, 247, 0.3);
+}
+
+.projects-stack span.tag-color-3 {
+  color: #ffa657;
+  background: rgba(219, 109, 40, 0.14);
+  border-color: rgba(219, 109, 40, 0.32);
+}
+
+.projects-stack span.tag-color-4 {
+  color: #f2cc60;
+  background: rgba(210, 153, 34, 0.14);
+  border-color: rgba(210, 153, 34, 0.32);
+}
+
+.projects-stack span.tag-color-5 {
+  color: #ff9492;
+  background: rgba(248, 81, 73, 0.13);
+  border-color: rgba(248, 81, 73, 0.3);
 }
 
 
@@ -456,27 +498,49 @@
 .projects-github {
   display: inline-flex;
 
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 18px;
+
   padding: 9px 13px;
 
-  border-radius: 5px;
+  width: fit-content;
 
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid #3a3a3a;
 
-  color: #f1d59c;
+  border-radius: 6px;
+
+  color: #f0eadf;
+
+  background: #1b1b1b;
+
+  font-family: inherit;
+
+  font-size: 0.76rem;
 
   text-decoration: none;
 
-  font-family: var(--mono, monospace);
-
-  font-size: 11px;
-
-  transition: all 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .projects-github:hover {
-  background: rgba(241, 213, 156, 0.08);
+  background: #242424;
 
-  border-color: rgba(241, 213, 156, 0.4);
+  border-color: #8f6bb3;
+
+  transform: translateY(-1px);
+}
+
+.projects-github-icon {
+  width: 15px;
+  height: 15px;
+
+  object-fit: contain;
 }
 
 
@@ -485,12 +549,11 @@
 ========================================================= */
 
 .projects-project-image {
-  display: flex;
+  width: 100%;
 
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 4 / 3;
 
-  min-height: 260px;
+  max-height: 60vh;
 
   overflow: hidden;
 
@@ -499,17 +562,29 @@
   background: #101112;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .projects-project-image img {
+  display: block;
+
   width: 100%;
   height: 100%;
 
-  max-height: 320px;
+  /*
+    Default fallback only — actual object-fit
+    and object-position are set per-project
+    inline via project.imageFit / project.imagePosition
+    in projects.json, so each project can control
+    its own crop precisely.
+  */
+  object-fit: contain;
 
-  object-fit: cover;
-
-  display: block;
+  object-position: center;
 }
 
 
@@ -523,7 +598,11 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 16px 24px;
+  min-height: 48px;
+
+  padding: 12px 22px;
+
+  flex-shrink: 0;
 
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -554,41 +633,19 @@
   cursor: default;
 }
 
-.projects-project-dots {
-  display: flex;
+.projects-navigation-label {
+  font-family: var(--mono, monospace);
 
-  gap: 6px;
-}
+  font-size: 11px;
 
-.projects-project-dots button {
-  width: 6px;
-  height: 6px;
-
-  padding: 0;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.2);
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-.projects-project-dots button.active {
-  width: 18px;
-
-  border-radius: 4px;
-
-  background: #f1d59c;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 
 /* =========================================================
    MOBILE
 ========================================================= */
+
 @media (max-width: 700px) {
 
   .projects-scene {
@@ -599,8 +656,6 @@
 
     margin-left: calc(50% - 50vw);
 
-    min-height: 0;
-
     border-radius: 0;
   }
 
@@ -610,27 +665,37 @@
   }
 
   .projects-modal-backdrop {
-    padding: 14px;
+    padding: 12px;
   }
 
   .projects-modal {
+    width: 100%;
+
     max-height: 92vh;
   }
 
   .projects-modal-content {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 26px 22px;
+
+    gap: 22px;
+
+    padding: 24px 20px;
+
     overflow-y: auto;
   }
 
   .projects-project-image {
-    min-height: 180px;
     order: -1;
+
+    aspect-ratio: 4 / 3;
+
+    max-height: 40vh;
   }
 
   .projects-filters {
     overflow-x: auto;
+
+    padding: 12px 16px;
   }
 
   .projects-modal-navigation {

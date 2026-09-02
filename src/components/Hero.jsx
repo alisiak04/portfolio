@@ -110,6 +110,65 @@ export default function Hero() {
         </span>
       ))}
     </div>
+    <div id="achievements" className="hero-achievements">
+  <div className="hero-achievements-label">
+    <span className="accent-keyword">const</span>
+    <span>achievements</span>
+    <span className="accent-ink">=</span>
+  </div>
+
+  <div className="achievement-cards">
+
+    <div className="achievement-card">
+      <span className="achievement-marker">★</span>
+
+      <div className="achievement-content">
+        <span className="achievement-year">Scholarship Recipient</span>
+
+        <h3>
+          Johnson & Johnson
+          <br />
+          WiSTEM2D
+        </h3>
+
+        <p>2025 Scholarship</p>
+      </div>
+    </div>
+
+    <div className="achievement-card">
+      <span className="achievement-marker">★</span>
+
+      <div className="achievement-content">
+        <span className="achievement-year">Scholarship Recipient</span>
+
+        <h3>
+          Equality, Diversity and Inclusion
+          <br />
+          Transact Scholarship
+        </h3>
+
+        <p>2024 Scholarship</p>
+      </div>
+    </div>
+
+    <div className="achievement-card">
+      <span className="achievement-marker">★</span>
+
+      <div className="achievement-content">
+        <span className="achievement-year">RUNNER-UP</span>
+
+        <h3>
+          Generative AI
+          <br />
+          for Good
+        </h3>
+
+        <p>The Open Incubator</p>
+      </div>
+    </div>
+
+  </div>
+</div>
     </section>
   )
 }
